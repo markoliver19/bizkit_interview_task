@@ -73,7 +73,7 @@ Currently, Phasebook users find each other only by providing each other their pr
 - Example calls to the search endpoint are:
   - http://127.0.0.1:5000/search?id=1
   - http://127.0.0.1:5000/search?name=Joe
-  - http://127.0.0.1:5000/search?id=5&name=Joe&age=25&occupation=Dev
+  - http://127.0.0.1:5000/search?id=5&name=Jane&age=31&occupation=Man
 
 ### Search Specifications
 - All of the search parameters are optional. That means a user can pass no search parameter and the function should return all users. The user can also pass just the `id` as a parameter and it should just return the user with that `id`. The user can also pass multiple parameters and the function should return all the users that match **ANY** of the parameters provided.
@@ -104,14 +104,12 @@ Given the following users:
   ]
   ```
 
-- **Request:** http://127.0.0.1:5000/search?id=2&name=John
+- **Request:** http://127.0.0.1:5000/search?id=1&name=John
 
   **Result:**
   ```
   [
-    {"id": "1", "name": "John Doe", "age": 29, "occupation": "Developer"},
-    {"id": "2", "name": "Jane Doe", "age": 30, "occupation": "Engineer"},
-    {"id": "4", "name": "John Smith", "age": 28, "occupation": "Architect"}
+    {"id": "1", "name": "John Doe", "age": 29, "occupation": "Developer"}
   ]
   ```
 
@@ -125,18 +123,18 @@ Given the following users:
   ]
   ```
 
-- **Request:** http://127.0.0.1:5000/search?id=5&name=Joe&age=30&occupation=Arc
+- **Request:** http://127.0.0.1:5000/search
 
   **Result:**
   ```
-  [
+[
     {"id": "1", "name": "John Doe", "age": 29, "occupation": "Developer"},
     {"id": "2", "name": "Jane Doe", "age": 30, "occupation": "Engineer"},
     {"id": "3", "name": "Joe Doe", "age": 25, "occupation": "Designer"},
     {"id": "4", "name": "John Smith", "age": 28, "occupation": "Architect"},
     {"id": "5", "name": "Jane Smith", "age": 31, "occupation": "Manager"},
     {"id": "6", "name": "Joe Smith", "age": 24, "occupation": "Designer"}
-  ]
+]
   ```
 
 ## Bonus Challenge
@@ -146,14 +144,9 @@ If you're someone who likes to go the extra mile, then this is for you! As an ex
 - `age`
 - `occupation`
 
-That means that with the examples above, the following request: http://127.0.0.1:5000/search?id=5&name=Joe&age=30&occupation=Arc, should return:
+That means that with the examples above, the following request: http://127.0.0.1:5000/search?id=4&name=John&age=28&occupation=Arc, should return:
 ```
   [
-    {"id": "5", "name": "Jane Smith", "age": 31, "occupation": "Manager"},
-    {"id": "3", "name": "Joe Doe", "age": 25, "occupation": "Designer"},
-    {"id": "6", "name": "Joe Smith", "age": 24, "occupation": "Designer"},
-    {"id": "1", "name": "John Doe", "age": 29, "occupation": "Developer"},
-    {"id": "2", "name": "Jane Doe", "age": 30, "occupation": "Engineer"},
     {"id": "4", "name": "John Smith", "age": 28, "occupation": "Architect"}
   ]
   ```
